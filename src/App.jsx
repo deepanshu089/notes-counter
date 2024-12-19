@@ -53,14 +53,13 @@ const App = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-800 p-6">
       {/* Main Content */}
       <div className="bg-white shadow-2xl rounded-3xl p-6 w-full max-w-4xl">
+        
         {/* Header */}
-        <header className="text-center">
-          <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
+        <header className="bg-gradient-to-r from-blue-500 to-green-500 text-white py-6 text-center rounded-t-3xl shadow-xl">
+          <h1 className="text-4xl font-extrabold  bg-clip-text">
             DEEPSHIKHA TECHNOLOGY
           </h1>
-          <p className="text-lg mt-2 text-gray-600">
-            Your trusted technology partner
-          </p>
+          <p className="text-lg mt-2">Your trusted technology partner</p>
         </header>
 
         {/* Notes Counter Section */}
@@ -158,9 +157,9 @@ const App = () => {
         </div>
 
         {/* Footer */}
-        <footer className="mt-12 text-center text-gray-600">
-          <p className="text-sm">© 2024 DEEPSHIKHA TECHNOLOGY. All rights reserved.</p>
-          <p className="text-sm">Phone: 9733168702</p>
+        <footer className="bg-gradient-to-r from-indigo-700 to-blue-800 text-white py-6 mt-12 text-center rounded-b-3xl shadow-xl">
+          <p className="text-xl font-bold">© 2024 DEEPSHIKHA TECHNOLOGY. All rights reserved.</p>
+          <p className="text-xl font-bold">Phone: 9733168702</p>
         </footer>
       </div>
     </div>
