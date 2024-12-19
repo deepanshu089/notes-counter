@@ -11,8 +11,6 @@ const App = () => {
     20: 0,
     10: 0,
     5: 0,
-    2: 0,
-    1: 0,
   });
 
   const [total, setTotal] = useState(0);
@@ -96,48 +94,50 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.keys(counts).map((denomination) => (
-                <tr
-                  key={denomination}
-                  className="hover:bg-blue-50 transition duration-300"
-                >
-                  <td className="border border-gray-300 p-2 sm:p-4 text-center text-gray-700 font-semibold">
-                    {denomination}
-                  </td>
-                  <td className="border border-gray-300 p-2 sm:p-4 text-center">
-                    <div className="flex items-center justify-between sm:justify-center space-x-2">
-                      {/* Decrement Button */}
-                      <button
-                        onClick={() => decreaseCount(denomination)}
-                        className={`w-8 h-8 sm:w-10 sm:h-10 bg-red-600 text-white text-lg sm:text-xl rounded-full flex items-center justify-center hover:bg-red-700 ${
-                          counts[denomination] === 0 &&
-                          "opacity-50 cursor-not-allowed"
-                        }`}
-                        disabled={counts[denomination] === 0} // Disable button if count is 0
-                      >
-                        -
-                      </button>
+              {Object.keys(counts)
+                .sort((a, b) => b - a) // Sort denominations in descending order
+                .map((denomination) => (
+                  <tr
+                    key={denomination}
+                    className="hover:bg-blue-50 transition duration-300"
+                  >
+                    <td className="border border-gray-300 p-2 sm:p-4 text-center text-gray-700 font-semibold">
+                      {denomination}
+                    </td>
+                    <td className="border border-gray-300 p-2 sm:p-4 text-center">
+                      <div className="flex items-center justify-between sm:justify-center space-x-2">
+                        {/* Decrement Button */}
+                        <button
+                          onClick={() => decreaseCount(denomination)}
+                          className={`w-8 h-8 sm:w-10 sm:h-10 bg-red-600 text-white text-lg sm:text-xl rounded-full flex items-center justify-center hover:bg-red-700 ${
+                            counts[denomination] === 0 &&
+                            "opacity-50 cursor-not-allowed"
+                          }`}
+                          disabled={counts[denomination] === 0} // Disable button if count is 0
+                        >
+                          -
+                        </button>
 
-                      {/* Input Field */}
-                      <input
-                        type="number"
-                        min="0"
-                        value={counts[denomination] === 0 ? "" : counts[denomination]}
-                        onChange={(e) => handleChange(e, denomination)}
-                        className="w-12 sm:w-20 p-1 sm:p-2 border border-gray-300 rounded-lg text-base sm:text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-center"
-                      />
+                        {/* Input Field */}
+                        <input
+                          type="number"
+                          min="0"
+                          value={counts[denomination] === 0 ? "" : counts[denomination]}
+                          onChange={(e) => handleChange(e, denomination)}
+                          className="w-12 sm:w-20 p-1 sm:p-2 border border-gray-300 rounded-lg text-base sm:text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-center"
+                        />
 
-                      {/* Increment Button */}
-                      <button
-                        onClick={() => increaseCount(denomination)}
-                        className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 text-white text-lg sm:text-xl rounded-full flex items-center justify-center hover:bg-blue-700"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                        {/* Increment Button */}
+                        <button
+                          onClick={() => increaseCount(denomination)}
+                          className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-600 text-white text-lg sm:text-xl rounded-full flex items-center justify-center hover:bg-blue-700"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
 
@@ -156,6 +156,12 @@ const App = () => {
             Total: ₹{total}
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="mt-12 text-center text-gray-600">
+          <p className="text-sm">© 2024 DEEPSHIKHA TECHNOLOGY. All rights reserved.</p>
+          <p className="text-sm">Phone: 9733168702</p>
+        </footer>
       </div>
     </div>
   );
